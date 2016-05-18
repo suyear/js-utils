@@ -45,10 +45,35 @@ utils.js may be freely distributed under the MIT Licence.
           for (var i = 0; i < length; i++) {
               rand += String.fromCharCode(Math.floor(Math.random() * 26) + aIndex);
           }
-
           return rand;
+      },
+      setCookie: function(name,value,expiredays){
+          var exdate=new Date();
+          exdate.setDate(exdate.getDate()+expiredays);
+          document.cookie=name+ "=" +escape(value)+
+          ((expiredays==null) ? "" : ";expires="+exdate.toGMTString());
+      },
+      getCookie: function(name){
+          if (document.cookie.length>0){
+              c_start=document.cookie.indexOf(name + "=");
+              if (c_start!=-1){
+                  c_start=c_start + c_name.length+1;
+                  c_end=document.cookie.indexOf(";",c_start);
+                  if (c_end==-1) {
+                      c_end=document.cookie.length;
+                      return unescape(document.cookie.substring(c_start,c_end));
+                  }
+              }
+              return "";
+          }
+      },
+      deleteCookie: function(name){
+          var exp = new Date();
+          exp.setTime(exp.getTime() - 1);
+          var cval=getCookie(name);
+          if(cval!=null){
+              document.cookie= name + "="+cval+";expires="+exp.toGMTString();
+          }
       }
-    };
-  })();
-
+  }})();
 }).call(this);
