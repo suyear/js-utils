@@ -73,6 +73,9 @@ utils.js may be freely distributed under the MIT Licence.
                 if (cval != null) {
                     document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString();
                 }
+            },
+            isReallyNaN: function(x){
+                return x !== x;
             }
         }
     })();

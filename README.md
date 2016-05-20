@@ -5,3 +5,4 @@ JS 常用方法工具包
     utils.setCookie(name, value, expiredays) : 设置Cookie
     utils.getCookie(name) : 获取Cookie
     utils.deleteCookie(name) : 删除Cookie
+    utils.isReallyNaN(x) : 判断是否是NaN类型
